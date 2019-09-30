@@ -1,0 +1,38 @@
+.left {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+.right {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+
+
+.display-summer {
+    background: rgb(88, 25, 0);
+    color: rgb(255, 224, 224);
+}
+
+.display-winter {
+    background: rgb(0, 12, 116);
+    color: rgb(224, 248, 255);
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; 
+}
+
+.container h1 {
+    margin: auto;
+    text-align: center;
+}
+
+.laoding-screen {
+    height: 100vh;
+}

@@ -1,7 +1,7 @@
 import React from "react";
 import {Bar} from "react-chartjs-2";
 
-class DataDisplay extends React.Component {
+class MovementDataDisplay extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -9,7 +9,7 @@ class DataDisplay extends React.Component {
         labels: ["outside", "inside"],
         datasets: [
           {
-            data: props.apiData,
+            data: props.Data,
             backgroundColor: ["rgba(255,99,132,0.5)", "rgba(255,159,64,0.5)"]
           }
         ]
@@ -19,19 +19,22 @@ class DataDisplay extends React.Component {
 
   render() {
     return (
-      <Bar
-        data={this.state.chartData}
-        options={{
-          title:{
-              display: true,
-              text: 'Site Hours',
-              fontSize: 25
-          },
-          legend:{display:false}
-        }}
-      />
+      <div className="Movement">
+        <Bar
+          data={this.state.chartData}
+          options={{
+            title:{
+                display: true,
+                text: 'Site Hours',
+                fontSize: 25
+            },
+            legend:{display:false}
+          }}
+        />
+        <Bar />
+      </div>
     );
   }
 }
 
-export default DataDisplay;
+export default MovementDataDisplay;

@@ -1,5 +1,5 @@
 import React from "react";
-import {Bar} from "react-chartjs-2";
+import {Bar, HorizontalBar} from "react-chartjs-2";
 
 class MovementDataDisplay extends React.Component {
   constructor(props) {
@@ -20,18 +20,19 @@ class MovementDataDisplay extends React.Component {
   render() {
     return (
       <div className="Movement">
-        <Bar
+        <HorizontalBar
           data={this.state.chartData}
           options={{
+            maintainAspectRatio: true,
+            responsive: true,
             title:{
                 display: true,
-                text: 'Site Hours',
+                text: this.props.Title,
                 fontSize: 25
             },
-            legend:{display:false}
+            legend:{display:false},
           }}
         />
-        <Bar />
       </div>
     );
   }

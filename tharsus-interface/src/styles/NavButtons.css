@@ -1,0 +1,28 @@
+.nav-buttons {
+    color: white;
+    list-style-type: none;
+}
+
+.nav-buttons li {
+    padding: 2.5em;
+    background: #FFAAB7;
+    opacity: 70%;
+}
+
+.nav-buttons li:hover {
+    opacity: 100%;
+}
+
+.nav-buttons li:first-child {
+    border-top-left-radius: 30px;
+    background: #E9D0B2;
+}
+
+.nav-buttons li:last-child {
+    border-bottom-left-radius: 30px;
+    background: #004EFF;
+}
+
+.button-container {
+    height: 50%;
+}

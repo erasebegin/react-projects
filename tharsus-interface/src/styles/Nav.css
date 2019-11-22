@@ -1,0 +1,10 @@
+.nav-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-end;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.2rem;
+    background: #000;
+    width: 20vw;
+}

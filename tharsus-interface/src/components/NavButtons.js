@@ -4,18 +4,14 @@ import "../styles/NavButtons.css";
 class NavButtons extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { active: "" };
     this.handleClick = this.handleClick.bind(this);
   }
 
-  handleClick(num) {
-    const btnArr = ["overview", "movement", "distribution"];
-    this.setState({ active: btnArr[num] });
-    this.props.getState(this.state.active);
+  handleClick(val) {
+    this.props.passNav(val);
   }
 
   render() {
-    console.log("child says " + this.state.active);
     return (
       <div className="button-container">
         <ul className="nav-buttons">

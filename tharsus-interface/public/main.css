@@ -4,12 +4,5 @@
 }
 
 body {
-  background-color: #ffffff;
-  background-image: radial-gradient(
-      ellipse at center,
-      rgba(0, 0, 0, 0) 50%,
-      rgba(0, 0, 0, 0.8) 100%
-    ),
-    url("https://www.csstextures.com/subtle-small-hexagons-T98.png");
-  background-repeat: repeat;
+  background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
 }

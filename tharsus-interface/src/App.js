@@ -2,24 +2,28 @@ import React from "react";
 import moment from "moment";
 import axios from "axios";
 import Nav from "./components/Nav";
-import MovementDataDisplay from "./components/MovementDataDisplay";
+import DataDisplay from "./components/DataDisplay";
 import "./styles/App.css";
-import 'materialize-css/dist/css/materialize.min.css';
 
 class App extends React.Component {
   constructor() {
     super();
 
     this.state = {
-      appDate: moment().format("1995-12-25", "YYYY-MM-DD"),
+      userDate: "poop",
       apiData: "",
-      navState: ""
+      navState: "overview"
     };
-    this.getNavState = this.getNavState.bind(this);
+    this.setNavState = this.setNavState.bind(this);
   }
 
-  getNavState(nav) {
-    this.setState({ navState: nav });
+  setNavState(nav) {
+    const btnArr = ["overview", "movement", "distribution"];
+    this.setState({ navState: btnArr[nav] });
+  }
+
+  setUserDate(date) {
+    this.setState({ userDate: date });
   }
 
   componentDidMount() {
@@ -38,25 +42,15 @@ class App extends React.Component {
       });
   }
 
+  componentDidUpdate() {
+    console.log("grandparent says " + this.state.navState + "\n" + this.state.userDate);
+  }
+
   render() {
-    console.log("grandparent says " + this.state.navState);
     return (
       <div className="App">
-        <Nav NavStateUpdate={this.getNavState} />
-        {this.state.navState === "movement" ? (
-          <div className="chart-container">
-            <MovementDataDisplay
-              Data={[3.3176110809420893, 4.18238891905791]}
-              Title="Site Hours"
-            />
-            <MovementDataDisplay
-              Data={[3.9176110809420893, 4.18238891905791]}
-              Title="Moving Hours"
-            />
-          </div>
-        ) : (
-          " "
-        )}
+        <Nav getNav={this.setNavState} getDate={this.setUserDate} />
+        <DataDisplay NavState={this.state.navState} />
       </div>
     );
   }

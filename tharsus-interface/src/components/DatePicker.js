@@ -1,35 +1,20 @@
 import React from "react";
-import M from "materialize-css";
+import moment from "moment";
+import 'react-datepicker';
 
 class DatePicker extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { dateInput: "" };
-  }
-
-  componentDidMount() {
-    const datePicker = document.querySelectorAll(".date-picker");
-    const options = {
-        autoClose:true,
-        format:"yyyy-mm-dd",
-        i18n:{
-            done:'',
-            cancel:''
-        }
-    }
-    M.Datepicker.init(datePicker,options);
-  }
-
   handleChange(event) {
-    this.setState({ dateInput: event.target.value });
-    console.log(this.state);
+    // this.props.passDate(event.target.value)
+    console.log(event.target.value);
   }
 
   render() {
     return (
-      <div>
-        <input type="text" onChange={this.handleChange.bind(this)} className="date-picker"></input>
-      </div>
+      <DatePicker
+      onChange={this.handleChange.bind(this)}
+      defaultValue={moment().format("YYYY-MM-DD")}
+      withPortal
+    />
     );
   }
 }

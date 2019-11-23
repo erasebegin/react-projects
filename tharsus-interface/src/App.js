@@ -15,6 +15,7 @@ class App extends React.Component {
       navState: "overview"
     };
     this.setNavState = this.setNavState.bind(this);
+    this.setUserDate = this.setUserDate.bind(this);
   }
 
   setNavState(nav) {

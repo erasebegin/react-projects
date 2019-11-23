@@ -15,6 +15,7 @@ class DataDisplay extends React.Component {
             <MovementDataDisplay
               Data={[3.3176110809420893, 4.18238891905791]}
               Title="Site Hours"
+              Labels={['inside','outside']}
             />
             <MovementDataDisplay
               Data={[3.9176110809420893, 4.18238891905791]}

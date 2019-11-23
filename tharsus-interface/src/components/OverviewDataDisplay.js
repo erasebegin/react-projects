@@ -6,7 +6,7 @@ class OverviewDataDisplay extends React.Component {
     super(props);
     this.state = {
       chartData: {
-        labels: ["outside", "inside"],
+        labels: [this.props.labels],
         datasets: [
           {
             data: props.Data,

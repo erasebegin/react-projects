@@ -1,6 +1,6 @@
 import React from "react";
 import NavButtons from "./NavButtons";
-import DatePicker from "./DatePicker";
+import DatePickerComponent from "./DatePickerComponent";
 import Logo from "../tharsus_logo.png";
 import "../styles/Nav.css";
 
@@ -16,7 +16,7 @@ class Nav extends React.Component {
   }
 
   passUserDate(date) {
-    this.props.setUserDate(date);
+    this.props.getDate(date);
   }
 
 
@@ -25,7 +25,7 @@ class Nav extends React.Component {
       <div className="nav-container">
         <img src={Logo} alt="Tharsus logo" />
         <NavButtons passNav={this.passNav} />
-        <DatePicker passDate={this.passUserDate}/>
+        <DatePickerComponent passDate={this.passUserDate}/>
       </div>
     );
   }

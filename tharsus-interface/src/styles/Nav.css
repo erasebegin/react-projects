@@ -1,10 +1,8 @@
 .nav-container {
+    width: 20vw;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    align-items: flex-end;
-    font-family: 'Roboto', sans-serif;
-    font-size: 1.2rem;
-    background: #000;
-    width: 20vw;
+    align-items: center;
+    background: radial-gradient(rgba(0, 0, 0, 0.459),rgba(0, 0, 0, 0.644))
 }

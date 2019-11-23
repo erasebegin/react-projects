@@ -1,8 +1,15 @@
 * {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-    background:gray;
+  background-color: #ffffff;
+  background-image: radial-gradient(
+      ellipse at center,
+      rgba(0, 0, 0, 0) 50%,
+      rgba(0, 0, 0, 0.8) 100%
+    ),
+    url("https://www.csstextures.com/subtle-small-hexagons-T98.png");
+  background-repeat: repeat;
 }

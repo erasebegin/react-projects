@@ -1,28 +1,38 @@
 .nav-buttons {
-    color: white;
+    color: black;
     list-style-type: none;
 }
 
 .nav-buttons li {
-    padding: 2.5em;
-    background: #FFAAB7;
-    opacity: 70%;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 900;
+    padding: 1.5em;
+    background: rgb(255, 170, 183);
+    opacity: 95%;
+    transition: 250ms;
 }
 
 .nav-buttons li:hover {
     opacity: 100%;
+    transform: translateX(-2px) scaleX(1.02);
+    transition: 250ms;
 }
 
 .nav-buttons li:first-child {
     border-top-left-radius: 30px;
-    background: #E9D0B2;
+    background: #004EFF;
+    color: white;
 }
 
 .nav-buttons li:last-child {
     border-bottom-left-radius: 30px;
-    background: #004EFF;
+    background: rgb(233, 208, 178);
 }
 
 .button-container {
-    height: 50%;
+    align-self: flex-end;
+    border-bottom-left-radius: 30px;
+    border-top-left-radius: 30px;
+    /* box-shadow: -2px 2px 2px rgb(158, 158, 158); */
 }

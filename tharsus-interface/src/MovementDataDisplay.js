@@ -1,5 +1,5 @@
 import React from "react";
-import {HorizontalBar} from "react-chartjs-2";
+import { Bar } from "react-chartjs-2";
 
 class MovementDataDisplay extends React.Component {
   constructor(props) {
@@ -10,31 +10,28 @@ class MovementDataDisplay extends React.Component {
         datasets: [
           {
             data: props.Data,
-            backgroundColor: ["rgb(255, 170, 183)", "rgb(233, 208, 178)"]
+            backgroundColor: ["rgba(255,99,132,0.5)", "rgba(255,159,64,0.5)"]
           }
         ]
       }
-    }
+    };
   }
 
   render() {
     return (
       <div className="Movement">
-        <HorizontalBar
+        <Bar
           data={this.state.chartData}
           options={{
-            maintainAspectRatio: false,
-            responsive: true,
-            title:{
-                display: true,
-                text: this.props.Title,
-                fontSize: 25
+            title: {
+              display: true,
+              text: "Site Hours",
+              fontSize: 10
             },
-            legend:{display:false},
+            legend: { display: false }
           }}
-          height={300}
-          width={900}
         />
+        <Bar />
       </div>
     );
   }

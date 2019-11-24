@@ -1,21 +1,19 @@
 import React from "react";
-import moment from "moment";
-import axios from "axios";
 import Nav from "./components/Nav";
 import DataDisplay from "./components/DataDisplay";
 import "./styles/App.css";
+import fastapi from './api/fastapi'
 
 class App extends React.Component {
   constructor() {
     super();
 
     this.state = {
-      userDate: "poop",
-      apiData: "",
+      userDate: "",
+      apiData: [],
       navState: "overview"
     };
     this.setNavState = this.setNavState.bind(this);
-    this.setUserDate = this.setUserDate.bind(this);
   }
 
   setNavState(nav) {
@@ -23,35 +21,17 @@ class App extends React.Component {
     this.setState({ navState: btnArr[nav] });
   }
 
-  setUserDate(date) {
-    this.setState({ userDate: date });
-  }
-
-  componentDidMount() {
-    const requestData = axios({
-      url: "https://tharsus-interview-api-v1.azurewebsites.net/data/2019-10-19",
-      method: "get",
-      headers: {
-        "content-type": "application/json"
-      }
-    })
-      .then(response => {
-        this.setState({ apiData: response });
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  }
-
-  componentDidUpdate() {
-    console.log("grandparent says " + this.state.navState + "\n" + this.state.userDate);
+  onDateChange = async date => {
+    const response = await fastapi.get(`/${date}`)
+    this.setState({apiData:response.data})
   }
 
   render() {
+    console.log("new state is ",this.state.apiData.site_hours)
     return (
       <div className="App">
-        <Nav getNav={this.setNavState} getDate={this.setUserDate} />
-        <DataDisplay NavState={this.state.navState} />
+        <Nav getNav={this.setNavState} getDate={this.onDateChange} />
+        <DataDisplay NavState={this.state.navState} passAPIData={this.state.apiData}/>
       </div>
     );
   }

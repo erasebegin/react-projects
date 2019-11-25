@@ -2,6 +2,7 @@ import React from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import moment from "moment";
+import "../styles/DatePicker.css"
 
 class DatePickerComponent extends React.Component {
   constructor(props) {
@@ -19,11 +20,14 @@ class DatePickerComponent extends React.Component {
 
   render() {
     return (
+      <div className="date-picker-container">
       <DatePicker
         selected={this.state.startDate}
         onChange={this.handleChange}
         withPortal
+        className="date-picker"
       />
+      </div>
     );
   }
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import {HorizontalBar} from "react-chartjs-2";
+import { HorizontalBar } from "react-chartjs-2";
 
 class MovementDataDisplay extends React.Component {
   constructor(props) {
@@ -7,7 +7,7 @@ class MovementDataDisplay extends React.Component {
   }
 
   render() {
-    console.log("chart component says",this.props.Data)
+
     return (
       <div className="Movement">
         <HorizontalBar
@@ -15,20 +15,30 @@ class MovementDataDisplay extends React.Component {
             labels: this.props.Labels,
             datasets: [
               {
-                data: this.props.Data,
+                label: "inside",
+                data: this.props.Set1,
                 backgroundColor: ["rgb(255, 100, 183)", "rgb(233, 208, 178)"]
+              },
+              {
+                label: "outside",
+                data: this.props.Set2,
+                backgroundColor: ["rgb(200, 100, 183)"]
               }
             ]
           }}
           options={{
             maintainAspectRatio: false,
             responsive: true,
-            title:{
-                display: true,
-                text: this.props.Title,
-                fontSize: 25
+            title: {
+              display: true,
+              text: this.props.Title,
+              fontSize: 25
             },
-            legend:{display:false},
+            legend: { display: false },
+            scales: {
+                xAxes: [{ stacked: true }],
+                yAxes: [{ stacked: true }]
+              }
           }}
           height={300}
           width={800}

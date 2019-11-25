@@ -1,8 +1,10 @@
 import React from "react";
-import MovementDataDisplay from "./MovementDataDisplay";
+import MovementBar from "./charts/MovementBar"
+import MovementStacked from "./charts/MovementStacked"
 import OverviewDataDisplay from "./OverviewDataDisplay";
 import DistributionDataDisplay from "./DistributionDataDisplay";
-import "../styles/DataDisplay.css"
+import "../styles/DataDisplay.css";
+
 
 // const { moving_hours = {} } = data;
 // const { moving = {} } = moving_hours;
@@ -14,11 +16,15 @@ class DataDisplay extends React.Component {
   }
 
   render() {
-    console.log("from DataDisplay: ");
     const {
       apiData: { site_hours = {} }
     } = this.props;
     const { inside = 0, outside = 0 } = site_hours;
+    const {
+      apiData: { moving_hours = {} }
+    } = this.props;
+    const { moving = {}, stationary = 0 } = moving_hours;
+    const {inside:movingInside = 0, outside:movingOutside =0} = moving; 
     const {
       apiData: { workforce_distribution = {} }
     } = this.props;
@@ -31,19 +37,25 @@ class DataDisplay extends React.Component {
       FAT = 0,
       "Wake Up": wakeUp = 0
     } = workforce_distribution;
+    const {
+      apiData: { work_scatter_meters:workScatterMeters = 0 } 
+    } = this.props;
+
+    console.log("work scatter meters: ", workScatterMeters)
 
     if (this.props.NavState === "movement") {
       return (
         <div className="chart-container">
-          <MovementDataDisplay
-            Data={[inside, outside]}
+          <MovementBar
             Title="Site Hours"
+            Data={[inside, outside]}
             Labels={["inside", "outside"]}
           />
-          <MovementDataDisplay
-            Data={[3, 9]}
+          <MovementStacked
             Title="Moving Hours"
-            Labels={["inside", "outside"]}
+            Set1={[movingInside, movingOutside]}
+            Set2={[stationary]}
+            Labels={["moving", "stationary"]}
           />
         </div>
       );
@@ -52,11 +64,12 @@ class DataDisplay extends React.Component {
       return (
         <div className="chart-container">
           <OverviewDataDisplay
-            Data={[3.3176110809420893, 4.18238891905791]}
+            Set1={[3.3176110809420893, 4.18238891905791]}
             Title="Site Hours"
           />
           <OverviewDataDisplay
-            Data={[3.9176110809420893, 4.18238891905791]}
+            Set1={[3.9176110809420893, 4.18238891905791]}
+            Set2={[8.3176110809420893, 1.18238891905791]}
             Title="Moving Hours"
           />
         </div>
@@ -65,6 +78,13 @@ class DataDisplay extends React.Component {
       return (
         <div>
           <DistributionDataDisplay
+            Title="Work Scatter Meters"
+            chartType={"HorizontalBar"}
+            Labels={["Work Scatter Meters"]}
+            Data={[workScatterMeters]}
+          />
+          <DistributionDataDisplay
+            Title="Workforce Distribution"
             chartType={"Pie"}
             Labels={[
               "Tob Box",
@@ -76,7 +96,6 @@ class DataDisplay extends React.Component {
               "Wake up"
             ]} //TODO: generate array of labels from object
             Data={[topBox, Firewall, Subs, PCB, threeD, FAT, wakeUp]}
-            Title="Workforce Distribution"
           />
           <DistributionDataDisplay
             chartType={"Bar"}

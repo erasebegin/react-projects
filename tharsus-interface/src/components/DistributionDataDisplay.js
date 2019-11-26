@@ -30,8 +30,8 @@ class DistributionDataDisplay extends React.Component {
               },
               legend: { display: false }
             }}
-            height={300}
-            width={900}
+            height={this.props.Height}
+            width={this.props.Width}
           />
         </div>
       );
@@ -58,8 +58,8 @@ class DistributionDataDisplay extends React.Component {
               },
               legend: { display: false }
             }}
-            height={300}
-            width={900}
+            height={this.props.Height}
+            width={this.props.Width}
           />
         </div>
       )} else if (this.props.chartType === "HorizontalBar") {
@@ -93,8 +93,8 @@ class DistributionDataDisplay extends React.Component {
                   }]
               }
               }}
-              height={100}
-              width={900}
+              height={this.props.Height}
+              width={this.props.Width}
             />
           </div>
         );

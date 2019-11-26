@@ -7,6 +7,10 @@ class NavButtons extends React.Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
+  componentDidMount(){
+    this.handleClick(0);
+  }
+
   handleClick(val) {
     this.props.passNav(val);
   }

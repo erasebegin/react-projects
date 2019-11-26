@@ -29,7 +29,6 @@
 .nav-buttons li:first-child {
     border-top-left-radius: 30px;
     background: rgba(0, 76, 255,0.8);
-    color: white;
 }
 
 .nav-buttons li:last-child {
@@ -37,6 +36,6 @@
     background: rgba(233, 208, 178,0.9);
 }
 
-.something {
-    background: rgb(111, 158, 179);
+.selected {
+    color: white;
 }

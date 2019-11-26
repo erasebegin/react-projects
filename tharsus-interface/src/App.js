@@ -11,8 +11,8 @@ class App extends React.Component {
 
     this.state = {
       userDate: moment(Date()).format("YYYY-MM-DD"),
-      apiData: {}, // this was set to a [] but it's data type is a actually an {}
-      navState: "overview"
+      apiData: {}, 
+      navState: "movement"
     };
     this.setNavState = this.setNavState.bind(this);
   }
@@ -28,16 +28,14 @@ class App extends React.Component {
 
   onDateChange = async date => {
     const response = await fastapi.get(`/${date}`)
-    console.log('onDateChange response.data', response.data)
 
     this.setState({ 
       apiData: response.data, 
-      userDate: date ? date : this.state.userDate // you were not setting this but you will need it for when setNavState runs
+      userDate: date ? date : this.state.userDate
     })
   }
 
   render() {
-    console.log("new state is ",this.state.apiData) // you should see this
     return (
       <div className="App">
         <Nav getNav={this.setNavState} getDate={this.onDateChange} />

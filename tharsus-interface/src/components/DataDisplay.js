@@ -1,13 +1,8 @@
 import React from "react";
 import MovementBar from "./charts/MovementBar";
 import MovementStacked from "./charts/MovementStacked";
-import OverviewDataDisplay from "./OverviewDataDisplay";
 import DistributionDataDisplay from "./DistributionDataDisplay";
 import "../styles/DataDisplay.css";
-
-// const { moving_hours = {} } = data;
-// const { moving = {} } = moving_hours;
-// const { inside, outside } = moving;
 
 class DataDisplay extends React.Component {
   constructor(props) {
@@ -68,17 +63,50 @@ class DataDisplay extends React.Component {
         </div>
       );
     }
-    if (this.props.NavState === "overview") {
+    else if (this.props.NavState === "overview") {
       return (
         <div className={("chart-container", "overview-container")}>
-          <OverviewDataDisplay
-            Set1={[3.3176110809420893, 4.18238891905791]}
-            Title="Site Hours"
+          <div className="overview-container-top">
+          <DistributionDataDisplay
+            Title="Movement"
+            chartType={"Pie"}
+            Labels={[
+              "inside",
+              "outside"
+            ]} 
+            Data={[movingInside,movingOutside]}
+            Height={300}
+            Width={200}
           />
-          <OverviewDataDisplay
-            Set1={[3.9176110809420893, 4.18238891905791]}
-            Set2={[8.3176110809420893, 1.18238891905791]}
-            Title="Moving Hours"
+          <DistributionDataDisplay
+            Title="Minues in Area"
+            chartType={"Bar"}
+            Labels={[
+              "Stores",
+              "Goods In",
+              "Quality",
+              "Inspection"
+            ]} 
+            Data={[stores, goodsIn, quality, inspection]}
+            Height={200}
+            Width={300}
+          />
+          </div>
+          <DistributionDataDisplay
+            Title="Workforce Distribution"
+            chartType={"Bar"}
+            Labels={[
+              "Tob Box",
+              "Firewall",
+              "Subs",
+              "PCB",
+              "3D Build",
+              "FAT",
+              "Wake up"
+            ]}
+            Data={[topBox, Firewall, Subs, PCB, threeD, FAT, wakeUp]}
+            Height={400}
+            Width={800}
           />
         </div>
       );
@@ -90,6 +118,8 @@ class DataDisplay extends React.Component {
             chartType={"HorizontalBar"}
             Labels={["Work Scatter Meters"]}
             Data={[workScatterMeters]}
+            Height={100}
+            Width={900}
           />
           <DistributionDataDisplay
             Title="Minues in Area"
@@ -99,8 +129,10 @@ class DataDisplay extends React.Component {
               "Goods In",
               "Quality",
               "Inspection"
-            ]} //TODO: generate array of labels from object
+            ]} 
             Data={[stores, goodsIn, quality, inspection]}
+            Height={300}
+            Width={900}
           />
           <DistributionDataDisplay
             chartType={"Bar"}
@@ -115,6 +147,8 @@ class DataDisplay extends React.Component {
             ]}
             Data={[topBox, Firewall, Subs, PCB, threeD, FAT, wakeUp]}
             Title="Workforce Distribution"
+            Height={300}
+            Width={900}
           />
         </div>
       );

@@ -1,10 +1,9 @@
 import React from "react";
-import MovementBar from "./charts/MovementBar"
-import MovementStacked from "./charts/MovementStacked"
+import MovementBar from "./charts/MovementBar";
+import MovementStacked from "./charts/MovementStacked";
 import OverviewDataDisplay from "./OverviewDataDisplay";
 import DistributionDataDisplay from "./DistributionDataDisplay";
 import "../styles/DataDisplay.css";
-
 
 // const { moving_hours = {} } = data;
 // const { moving = {} } = moving_hours;
@@ -24,7 +23,7 @@ class DataDisplay extends React.Component {
       apiData: { moving_hours = {} }
     } = this.props;
     const { moving = {}, stationary = 0 } = moving_hours;
-    const {inside:movingInside = 0, outside:movingOutside =0} = moving; 
+    const { inside: movingInside = 0, outside: movingOutside = 0 } = moving;
     const {
       apiData: { workforce_distribution = {} }
     } = this.props;
@@ -38,10 +37,19 @@ class DataDisplay extends React.Component {
       "Wake Up": wakeUp = 0
     } = workforce_distribution;
     const {
-      apiData: { work_scatter_meters:workScatterMeters = 0 } 
+      apiData: { work_scatter_meters: workScatterMeters = 0 }
     } = this.props;
+    const {
+      apiData: { minues_in_area = {} }
+    } = this.props;
+    const {
+      Stores: stores = 0,
+      "Goods In": goodsIn = 0,
+      Quality: quality = 0,
+      Inspection: inspection = 0
+    } = minues_in_area;
 
-    console.log("work scatter meters: ", workScatterMeters)
+    console.log("work scatter meters: ", workScatterMeters);
 
     if (this.props.NavState === "movement") {
       return (
@@ -62,7 +70,7 @@ class DataDisplay extends React.Component {
     }
     if (this.props.NavState === "overview") {
       return (
-        <div className="chart-container">
+        <div className={("chart-container", "overview-container")}>
           <OverviewDataDisplay
             Set1={[3.3176110809420893, 4.18238891905791]}
             Title="Site Hours"
@@ -76,7 +84,7 @@ class DataDisplay extends React.Component {
       );
     } else if (this.props.NavState === "distribution") {
       return (
-        <div>
+        <div className={"distribution-container"}>
           <DistributionDataDisplay
             Title="Work Scatter Meters"
             chartType={"HorizontalBar"}
@@ -84,18 +92,15 @@ class DataDisplay extends React.Component {
             Data={[workScatterMeters]}
           />
           <DistributionDataDisplay
-            Title="Workforce Distribution"
-            chartType={"Pie"}
+            Title="Minues in Area"
+            chartType={"Bar"}
             Labels={[
-              "Tob Box",
-              "Firewall",
-              "Subs",
-              "PCB",
-              "3D Build",
-              "FAT",
-              "Wake up"
+              "Stores",
+              "Goods In",
+              "Quality",
+              "Inspection"
             ]} //TODO: generate array of labels from object
-            Data={[topBox, Firewall, Subs, PCB, threeD, FAT, wakeUp]}
+            Data={[stores, goodsIn, quality, inspection]}
           />
           <DistributionDataDisplay
             chartType={"Bar"}

@@ -16,7 +16,7 @@ class DistributionDataDisplay extends React.Component {
               datasets: [
                 {
                   data: this.props.Data,
-                  backgroundColor: ["rgb(255, 100, 183)"]
+                  backgroundColor: ["#B36671","#FFFA91","#FFAAB7","#74B1CC","#6F9EB3","#B36671","#FFFA91"]
                 }
               ]
             }}
@@ -37,14 +37,14 @@ class DistributionDataDisplay extends React.Component {
       );
     } else if (this.props.chartType === "Pie") {
       return (
-        <div className="bar-container">
+        <div>
           <Pie
             data={{
               labels: this.props.Labels,
               datasets: [
                 {
                   data: this.props.Data,
-                  backgroundColor: ["rgb(255, 100, 183)"]
+                  backgroundColor: ["rgb(179, 102, 113)","rgb(255, 252, 194)","rgb(255, 170, 183)","rgb(117, 178, 204)","rgb(111, 158, 179)"]
                 }
               ]
             }}
@@ -64,14 +64,14 @@ class DistributionDataDisplay extends React.Component {
         </div>
       )} else if (this.props.chartType === "HorizontalBar") {
         return (
-          <div className="bar-container">
+          <div>
             <HorizontalBar
               data={{
                 labels: this.props.Labels,
                 datasets: [
                   {
                     data: this.props.Data,
-                    backgroundColor: ["rgb(255, 100, 183)"]
+                    backgroundColor: ["rgb(179, 102, 113)"]
                   }
                 ]
               }}
@@ -86,14 +86,14 @@ class DistributionDataDisplay extends React.Component {
                 legend: { display: false },
                 scales: {
                   yAxes: [{
-                      display: true,
+                      display: false,
                       ticks: {
-                          suggestedMax: 2, suggestedMin: 0    // minimum will be 0, unless there is a lower value.
+                          suggestedMax: 5, beginAtZero: true    // minimum will be 0, unless there is a lower value.
                       }
                   }]
               }
               }}
-              height={300}
+              height={100}
               width={900}
             />
           </div>

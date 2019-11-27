@@ -17,12 +17,12 @@ class MovementDataDisplay extends React.Component {
               {
                 label: "inside",
                 data: this.props.Set1,
-                backgroundColor: ["rgb(255, 100, 183)", "rgb(233, 208, 178)"]
+                backgroundColor: ["#8AD49A", "#FFD6A3"]
               },
               {
                 label: "outside",
                 data: this.props.Set2,
-                backgroundColor: ["rgb(200, 100, 183)"]
+                backgroundColor: ["#7F5AB8"]
               }
             ]
           }}

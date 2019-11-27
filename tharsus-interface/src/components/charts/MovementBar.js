@@ -16,7 +16,7 @@ class MovementBar extends React.Component {
               datasets: [
                 {
                   data: this.props.Data,
-                  backgroundColor: ["rgb(255, 100, 183)", "rgb(233, 208, 178)"]
+                  backgroundColor: ["#FFD6A3", "#9581B5"]
                 }
               ]
             }}

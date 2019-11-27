@@ -33,9 +33,9 @@
 
 .nav-buttons li:last-child {
     border-bottom-left-radius: 30px;
-    background: rgba(233, 208, 178,0.9);
+    background: rgba(233, 208, 178, 0.902);
 }
 
-.selected {
+.nav-buttons .active {
     color: white;
 }

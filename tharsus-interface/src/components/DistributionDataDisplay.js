@@ -44,7 +44,7 @@ class DistributionDataDisplay extends React.Component {
               datasets: [
                 {
                   data: this.props.Data,
-                  backgroundColor: ["rgb(179, 102, 113)","rgb(255, 252, 194)","rgb(255, 170, 183)","rgb(117, 178, 204)","rgb(111, 158, 179)"]
+                  backgroundColor: ["rgb(179, 102, 113)","#6F9EB3","rgb(255, 170, 183)","rgb(117, 178, 204)","rgb(111, 158, 179)"]
                 }
               ]
             }}
@@ -56,7 +56,7 @@ class DistributionDataDisplay extends React.Component {
                 text: this.props.Title,
                 fontSize: 25
               },
-              legend: { display: false }
+              legend: { display: true }
             }}
             height={this.props.Height}
             width={this.props.Width}

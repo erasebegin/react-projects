@@ -1,0 +1,32 @@
+.App {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    text-align: center;
+}
+
+.App h1 {
+    width: 50vw;
+}
+
+.App p {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight:700;
+    font-size: 2rem;
+    background: #000;
+    color: white;
+    padding: .5em .75em;
+    border-radius: 5px;
+    transition: 250ms;
+}
+
+.App p:hover,
+.App p:focus {
+    transform: translate(-1px,2px);
+    padding: .8em .9em;
+    cursor: pointer;
+    transition: 250ms;
+}
